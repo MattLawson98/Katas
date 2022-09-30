@@ -28,19 +28,23 @@ const companySalesData = [
 ];
 
 const calculateSalesTax = function (salesData, taxRates) {
-  let results = {};
-  let totalSales;
-  let totalTax;
+  let result = {};
+  let totalSales = 0;
+  let totalTax = 0;
   for (let company of salesData) {
-    console.log(company);
-    console.log(Object.keys(taxRates).length);
+    // console.log(company);
+    // console.log( Object.values(company.sales));
     for (let i = 0; i < Object.keys(taxRates).length; i++) {
       if (company.province === Object.keys(taxRates)[i]) {
-          
+        let tax = Object.values(taxRates)[i]
+        val = Object.values(company.sales).reduce((a,b) => a+b, 0)
+        totalSales = Math.floor(val * (tax + 1));
+        totalTax = val * tax;
+        console.log(totalSales)
       }
     }
-  }
 
+  }
 }
 
 
